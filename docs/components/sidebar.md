@@ -147,7 +147,7 @@ An individual item within a `SidebarMenu`.
 |---|---|---|
 | `className` | `string` | Additional CSS classes to apply to the menu item. |
 | `active` | `boolean` | If `true`, applies active styling to the menu item. | `false` |
-| `...props` | `React.HTMLAttributes<HTMLDivElement>` | Standard HTML `div` attributes. |
+| `children` | `React.ReactNode` | The content of the menu item. |
 
 ### `SidebarMenuButton`
 
@@ -156,7 +156,7 @@ A button component typically used inside `SidebarMenuItem` for clickable navigat
 | Prop Name | Type | Description |
 |---|---|---|
 | `className` | `string` | Additional CSS classes to apply to the button. |
-| `asChild` | `boolean` | If `true`, the button will render its child component instead of a `<button>` element, passing its props to the child. (Note: Current implementation uses `div` for `asChild`.) | `false` |
+| `asChild` | `boolean` | If `true`, the button will render its child component instead of a `<button>` element, passing its props to the child. | `false` |
 | `...props` | `React.ButtonHTMLAttributes<HTMLButtonElement>` | Standard HTML `button` attributes. |
 
 ### `SidebarTrigger`

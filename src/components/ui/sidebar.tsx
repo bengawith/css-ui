@@ -74,11 +74,13 @@ export function SidebarMenu({ className, ...props }: React.HTMLAttributes<HTMLDi
   return <nav className={cn("space-y-1", className)} {...props} />;
 }
 
-interface SidebarMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {
+interface SidebarMenuItemProps {
+  className?: string;
   active?: boolean;
+  children?: React.ReactNode;
 }
 
-export function SidebarMenuItem({ className, active, ...props }: SidebarMenuItemProps) {
+export function SidebarMenuItem({ className, active }: SidebarMenuItemProps) {
   return (
     <div
       className={cn(
@@ -86,7 +88,6 @@ export function SidebarMenuItem({ className, active, ...props }: SidebarMenuItem
         active ? "bg-accent text-accent-foreground" : "text-muted-foreground hover:bg-muted",
         className
       )}
-      {...props}
     />
   );
 }
@@ -96,16 +97,16 @@ interface SidebarMenuButtonProps extends React.ButtonHTMLAttributes<HTMLButtonEl
 }
 
 export function SidebarMenuButton({ className, asChild, ...props }: SidebarMenuButtonProps) {
-  const Comp = asChild ? "div" : "button"; // Using div for asChild for now, will need to be more robust
-  return (
-    <Comp
-      className={cn(
-        "flex items-center w-full px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 justify-start",
-        className
-      )}
-      {...props}
-    />
+  const baseClass = cn(
+    "flex items-center w-full px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 justify-start",
+    className
   );
+
+  if (asChild) {
+    return <div className={baseClass}>{props.children}</div>;
+  }
+
+  return <button className={baseClass} {...props} />;
 }
 
 interface SidebarTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
