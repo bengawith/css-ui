@@ -29,8 +29,9 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
-      - run: npm install -g pnpm              # Install pnpm globally
-      - run: pnpm install                     # Install dependencies using pnpm
-      - run: pnpm publish --no-git-checks     # Publish using pnpm
+      - run: npm install -g pnpm                                   # Install pnpm globally
+      - run: pnpm install                                          # Install dependencies using pnpm
+      - run: pnpm config set registry https://npm.pkg.github.com/  # Set registry to GitHub Packages
+      - run: pnpm publish --no-git-checks                          # Publish using pnpm
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
