@@ -38,7 +38,28 @@ function App() {
 }
 ```
 
-For detailed usage and available props for each component, please refer to the `docs/components` directory.
+### Using Hooks
+
+This library also provides custom React hooks for common functionality:
+
+```tsx
+import { useIsMobile, useToast } from '@bengawith/ui';
+
+// Detect mobile viewport
+const isMobile = useIsMobile();
+
+// Show toast notifications
+const { toast } = useToast();
+toast({
+  title: "Success!",
+  description: "Operation completed successfully."
+});
+```
+
+For detailed usage and available props for each component and hook, please refer to the documentation:
+
+- **[Components Documentation](./docs/components/)**
+- **[Hooks Documentation](./docs/hooks/)**
 
 ## Contributing
 
